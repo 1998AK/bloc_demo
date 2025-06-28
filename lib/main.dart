@@ -1,4 +1,3 @@
-import 'package:bloc_demo/splash_view.dart';
 import 'package:bloc_demo/utils/app_routes.dart';
 import 'package:flutter/material.dart';
 
