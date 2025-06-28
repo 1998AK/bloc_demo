@@ -1,7 +1,12 @@
 import 'package:bloc_demo/utils/app_color.dart';
 import 'package:bloc_demo/utils/app_routes.dart';
 import 'package:bloc_demo/utils/assets_name.dart';
+import 'package:bloc_demo/utils/other.dart';
+import 'package:bloc_demo/utils/share_pref.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'model/login_model.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -15,10 +20,22 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) {
-        Navigator.pushNamed(context, AppRoutes.loginView);
-      }
+    SharedPreferences.getInstance().then((pref){
+      String data = pref.getString(loginInfo) ?? '';
+      Future.delayed(const Duration(seconds: 2), () {
+        if(data.isNotEmpty){
+          loginModel = loginModelFromJson(data);
+          debugPrint("name is ${loginModel?.user?.name}");
+          if(mounted) {
+            Navigator.pushNamed(context, AppRoutes.bottomNavigationUi);
+          }
+        }
+        else{
+          if (mounted) {
+            Navigator.pushNamed(context, AppRoutes.loginView);
+          }
+        }
+      });
     });
   }
 

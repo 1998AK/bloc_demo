@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../utils/app_color.dart';
+import '../../utils/app_routes.dart';
 import '../../utils/common_elevated_button.dart';
 
 class LoginView extends StatelessWidget {
@@ -17,8 +18,8 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mobileNoController = TextEditingController();
-    final passwordController = TextEditingController();
+    final mobileNoController = TextEditingController(text: '9876543210');
+    final passwordController = TextEditingController(text: '123456');
     final formKey = GlobalKey<FormState>();
 
     return BlocProvider(
@@ -43,8 +44,9 @@ class LoginView extends StatelessWidget {
             }
 
             if(state is LoginSuccess){
+              Navigator.pushNamed(context, AppRoutes.bottomNavigationUi);
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Login Successful')),
+                SnackBar(content: Text('${state.loginModel.user?.name} Login Successful')),
               );
             }
             else if(state is LoginFailure){
@@ -178,7 +180,6 @@ class LoginView extends StatelessWidget {
                               CommonElevatedButton(
                                 text: "Log in",
                                 onPressed: () {
-
                                   if(formKey.currentState!.validate()){
                                     context.read<LoginBloc>().add(
                                       LoginButtonPressed(
