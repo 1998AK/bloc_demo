@@ -50,12 +50,12 @@ class TextFormFieldStyle{
     return InputDecoration(
       labelText: text,
       // isDense: true,
-      labelStyle: textFormFieldStyle.copyWith(fontSize: 14, color: blackColor),
+      labelStyle: textFormFieldStyle.copyWith(fontSize: sizeOfReturnValue(size: 14), color: blackColor),
       hintText: hindText,
       fillColor: borderColor,
-      // contentPadding: const EdgeInsets.symmetric(vertical: 13),
+      contentPadding: EdgeInsets.symmetric(vertical: sizeOfReturnValue(size: 13)),
       hintStyle: GoogleFonts.montserrat(
-        fontSize: hindFontSize ?? 16,
+        fontSize: sizeOfReturnValue(size: hindFontSize ?? 14),
         fontWeight: FontWeight.w500,
         color: hindColor ?? inputFieldHintColor,
       ),
@@ -430,7 +430,11 @@ class _SmartTextFieldState extends State<SmartTextField>
       },
       child: Container(
         color: Colors.transparent,
-        child: const Icon(Icons.cancel),
+        child: Icon(
+          Icons.cancel,
+          size: sizeOfReturnValue(size: 16),
+          // color: Colors.grey,
+        ),
       ),
     );
   }
@@ -440,8 +444,9 @@ class _SmartTextFieldState extends State<SmartTextField>
       onTap: handleHidePassword,
       child: Container(
         color: Colors.transparent,
-        child: const Icon(
+        child: Icon(
           Icons.visibility_off,
+          size: sizeOfReturnValue(size: 16),
           // color: Colors.grey,
         ),
       ),
@@ -453,8 +458,9 @@ class _SmartTextFieldState extends State<SmartTextField>
       onTap: handleHidePassword,
       child: Container(
         color: Colors.transparent,
-        child: const Icon(
+        child: Icon(
           Icons.visibility,
+          size: sizeOfReturnValue(size: 16),
           // color: Colors.grey,
         ),
       ),

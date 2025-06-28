@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../utils/app_color.dart';
+import '../../utils/common_elevated_button.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -32,7 +33,7 @@ class LoginView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CommonTextWidget(text: "Don't have an account? ",color: welcomeBackColor,fontSize: 14,),
-                      CommonTextWidget(text: "Sign up",color: signUpColor,fontSize: 14,),
+                      CommonTextWidget(text: "Sign up",color: appColor,fontSize: 14,),
             
                     ],
                   ),
@@ -41,22 +42,39 @@ class LoginView extends StatelessWidget {
                     // alignment: Alignment.topLeft,
                     padding: EdgeInsets.only(left: sizeOfReturnValue(size: 20),right: sizeOfReturnValue(size: 20)),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(10)),
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(sizeOfReturnValue(size: 25)),bottomLeft: Radius.circular(sizeOfReturnValue(size: 25)),bottomRight: Radius.circular(sizeOfReturnValue(size: 25))),
                       border: Border.all(color: loginBorderColor)
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CommonTextWidget(text: "Phone number"),
+                        addVerticalSpace(height: 10),
+                        CommonTextWidget(text: "Phone number",fontWeight: FontWeight.w600,fontSize: 12,color: labelShowTextColor,),
                         SmartTextField(
                           keyboardType: TextInputType.number,
                           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                           decoration: TextFormFieldStyle.commonStyleApp(hindText: "+91 9876543210",prefix: SvgPicture.asset(AssetsName.phoneIcon,height: sizeOfReturnValue(size: 16))),
-                        )
+                        ),
+                        addVerticalSpace(height: 10),
+                        CommonTextWidget(text: "Password",fontWeight: FontWeight.w600,fontSize: 12,color: labelShowTextColor,),
+                        SmartTextField(
+                          showEyeIcon: true,
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                          decoration: TextFormFieldStyle.commonStyleApp(hindText: "***********",prefix: SvgPicture.asset(AssetsName.keyIcon,height: sizeOfReturnValue(size: 16))),
+                        ),
+                        addVerticalSpace(height: 10),
+                        CommonTextWidget(text: "Forgot you password?",color: forgotPasswordColor,fontSize: 12,),
+                        addVerticalSpace(height: 10),
+
+                        CommonElevatedButton(
+                          text: "Log in",
+                          onPressed: () {},
+                        ),
+                        addVerticalSpace(height: 10),
                       ],
                     ),
                   ),
-
                 ],
               ),
             ),
