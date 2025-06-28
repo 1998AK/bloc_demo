@@ -5,5 +5,6 @@ class AssetsName{
 
   static const routeSvg = 'assets/svg';
   static const home = '$routeSvg/home.svg';
+  static const phoneIcon = '$routeSvg/phoneIcon.svg';
 
 }
