@@ -43,7 +43,7 @@ class CommonElevatedButton extends StatelessWidget {
       backgroundColor: backgroundColor,
       elevation: elevation,
       padding: padding,
-      minimumSize: Size(width ?? double.infinity, height ?? 48),
+      minimumSize: Size(width ?? double.infinity, height ?? 40),
       shape: shape ??
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius),
