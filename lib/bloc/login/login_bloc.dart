@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:bloc_demo/bloc/login/login_events.dart';
 import 'package:bloc_demo/bloc/login/login_states.dart';
 import 'package:bloc/bloc.dart';
+import 'package:bloc_demo/localdatabase/local_database.dart';
 import 'package:bloc_demo/model/login_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../api/api_name.dart';
@@ -24,11 +25,20 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
       };
 
       final apiResponse = await _api.postApi(url: login,data: data);
-      var apiResponseJsonEncode = jsonEncode(apiResponse.data);
-      SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-      await sharedPreferences.setString(loginInfo, apiResponseJsonEncode);
-      loginModel = loginModelFromJson(apiResponseJsonEncode);
-      emit(LoginSuccess(loginModelFromJson(apiResponseJsonEncode)));
+
+      if(apiResponse.statusCode == 200){
+        var apiResponseJsonEncode = jsonEncode(apiResponse.data);
+        await createTable();
+        await showALLTableField();
+        SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+        await sharedPreferences.setString(loginInfo, apiResponseJsonEncode);
+        loginModel = loginModelFromJson(apiResponseJsonEncode);
+        emit(LoginSuccess(loginModelFromJson(apiResponseJsonEncode)));
+      }
+      else{
+        emit(LoginFailure(apiResponse.errorMessage.toString()));
+      }
+
     });
   }
 }

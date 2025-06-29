@@ -1,3 +1,4 @@
+// import 'package:bloc_demo/localdatabase/local_database.dart';
 import 'package:bloc_demo/other/spiral_matrix.dart';
 import 'package:bloc_demo/utils/app_color.dart';
 import 'package:bloc_demo/utils/app_routes.dart';
@@ -7,6 +8,7 @@ import 'package:bloc_demo/utils/share_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'localdatabase/local_database.dart';
 import 'model/login_model.dart';
 
 class SplashView extends StatefulWidget {
@@ -20,7 +22,6 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-    spiralMatrix();
     SharedPreferences.getInstance().then((pref){
       String data = pref.getString(loginInfo) ?? '';
       Future.delayed(const Duration(seconds: 2), () {
@@ -28,8 +29,8 @@ class _SplashViewState extends State<SplashView> {
           loginModel = loginModelFromJson(data);
           debugPrint("name is ${loginModel?.user?.name}");
           if(mounted) {
-            // Navigator.pushNamed(context, AppRoutes.bottomNavigationUi);
-            Navigator.pushNamed(context, AppRoutes.boxGame);
+            Navigator.pushNamed(context, AppRoutes.bottomNavigationUi);
+            // Navigator.pushNamed(context, AppRoutes.boxGame);
           }
         }
         else{
