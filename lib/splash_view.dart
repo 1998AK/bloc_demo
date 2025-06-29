@@ -1,5 +1,3 @@
-// import 'package:bloc_demo/localdatabase/local_database.dart';
-import 'package:bloc_demo/other/spiral_matrix.dart';
 import 'package:bloc_demo/utils/app_color.dart';
 import 'package:bloc_demo/utils/app_routes.dart';
 import 'package:bloc_demo/utils/assets_name.dart';
@@ -7,8 +5,6 @@ import 'package:bloc_demo/utils/other.dart';
 import 'package:bloc_demo/utils/share_pref.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'localdatabase/local_database.dart';
 import 'model/login_model.dart';
 
 class SplashView extends StatefulWidget {
