@@ -1,3 +1,4 @@
+import 'package:bloc_demo/other/spiral_matrix.dart';
 import 'package:bloc_demo/utils/app_color.dart';
 import 'package:bloc_demo/utils/app_routes.dart';
 import 'package:bloc_demo/utils/assets_name.dart';
@@ -19,7 +20,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-
+    spiralMatrix();
     SharedPreferences.getInstance().then((pref){
       String data = pref.getString(loginInfo) ?? '';
       Future.delayed(const Duration(seconds: 2), () {
