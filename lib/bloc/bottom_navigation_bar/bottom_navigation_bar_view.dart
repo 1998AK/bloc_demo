@@ -2,6 +2,7 @@ import 'package:bloc_demo/bloc/bottom_navigation_bar/bottom_navigation_bar_bloc.
 import 'package:bloc_demo/bloc/bottom_navigation_bar/bottom_navigation_bar_states.dart';
 import 'package:bloc_demo/bloc/home/home_view.dart';
 import 'package:bloc_demo/bloc/profile/profile_view.dart';
+import 'package:bloc_demo/notification/local_notification.dart';
 import 'package:bloc_demo/utils/app_color.dart';
 import 'package:bottom_bar_matu/bottom_bar/bottom_bar_bubble.dart';
 import 'package:bottom_bar_matu/bottom_bar_item.dart';
@@ -37,8 +38,9 @@ class _BottomNavigationUiState extends State<BottomNavigationUi> {
                 const HomeView(),
                 const LocationScreen(),
                 const WeatherWithLocationScreen(),
+                const NotificationScreen(),
                 const ProfileView(),
-                Container(color: Colors.white),
+
               ][currentIndex];
             },
           ),
@@ -49,7 +51,7 @@ class _BottomNavigationUiState extends State<BottomNavigationUi> {
               BottomBarItem(iconData: Icons.home),
               BottomBarItem(iconData: Icons.location_on_outlined),
               BottomBarItem(iconData: Icons.sunny),
-              BottomBarItem(iconData: Icons.ad_units_outlined),
+              BottomBarItem(iconData: Icons.notification_add_outlined),
               BottomBarItem(iconData: Icons.account_box_outlined),
             ],
             onSelect: (index) {
