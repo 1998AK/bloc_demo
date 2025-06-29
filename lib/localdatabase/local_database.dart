@@ -6,15 +6,18 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class Attendance{
-  static String attendanceTable = "AttendanceTable";
+  static String attendanceTable = "Attendance";
+
 }
+
+const String databaseName = "Test.db";
 
 Future<Map<String, dynamic>> createTable({
   int? version,
 }) async
 {
   Directory directory = await getApplicationDocumentsDirectory();
-  String path = join(directory.path, 'alpesh.db');
+  String path = join(directory.path, databaseName);
   // String path = join(directory.path, '$tableName.db');
 
   late Database database;
@@ -28,7 +31,7 @@ Future<Map<String, dynamic>> createTable({
   }
 
   try {
-    database = await openDatabase(path, version: version ?? 1,
+    database = await openDatabase(path, version: version ?? 2,
         onCreate: (Database db, int version) async {
           // Create tables
           try {
@@ -114,7 +117,7 @@ Future<bool> updateCheckDetails({required String tableId,required Map<String,dyn
 Future<Database> openExistingDatabase() async {
 
   Directory directory = await getApplicationDocumentsDirectory();
-  String path = join(directory.path, 'alpesh.db');
+  String path = join(directory.path, databaseName);
 
   try{
     Database database = await openDatabase(path);

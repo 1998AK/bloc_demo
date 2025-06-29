@@ -29,6 +29,7 @@ class LoginBloc extends Bloc<LoginEvent,LoginState>{
       if(apiResponse.statusCode == 200){
         var apiResponseJsonEncode = jsonEncode(apiResponse.data);
         await createTable();
+        await Future.delayed(Duration(seconds: 2));
         await showALLTableField();
         SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
         await sharedPreferences.setString(loginInfo, apiResponseJsonEncode);
