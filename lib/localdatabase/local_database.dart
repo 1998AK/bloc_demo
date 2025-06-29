@@ -91,7 +91,7 @@ Future<void> addNewDataInLocal({required Map<String, dynamic> newCheckData}) asy
   }
 }
 
-Future<bool> updateCheckDetails({required String checkId,required Map<String,dynamic> updatedData}) async {
+Future<bool> updateCheckDetails({required String tableId,required Map<String,dynamic> updatedData}) async {
   Database db = await openExistingDatabase();
 
   try {
@@ -99,8 +99,8 @@ Future<bool> updateCheckDetails({required String checkId,required Map<String,dyn
     await db.update(
       Attendance.attendanceTable,
       updatedData, // Provide the value you want to update with
-      where: 'id = ?',
-      whereArgs: [checkId],
+      where: 'tableId = ?',
+      whereArgs: [tableId],
     );
 
     return true;
@@ -151,15 +151,18 @@ Future<void> showTableData({required String tableName,String? checkId}) async {
 }
 
 
-Future<bool> deleteCheckInImage({required String checkId, required int deletedImageId}) async {
+Future<bool> deleteCheckInImage({required String tableId, int? deletedImageId}) async {
   Database db = await openExistingDatabase();
 
   try {
     // Delete the image from the check images table
     await db.delete(
       Attendance.attendanceTable,
-      where: 'check_id = ? AND id = ?',
-      whereArgs: [checkId, deletedImageId],
+      // where: 'check_id = ? AND id = ?',
+      // whereArgs: [checkId, deletedImageId],
+
+      where: 'tableId = ?',
+      whereArgs: [tableId],
     );
     return true;
   } catch (e) {
