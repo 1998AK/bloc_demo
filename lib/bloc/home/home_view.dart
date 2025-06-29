@@ -14,13 +14,13 @@ class HomeView extends StatelessWidget {
       child: Scaffold(body: Center(child: Column(
         children: [
           InkWell(onTap: () async{
-            await addNewDataInLocal(newCheckData: {"Name": "alpesh kukadiya ${Random().nextInt(10)}"});
+            await addNewDataInLocal(newCheckData: {"Name": "Sunder Raj ${Random().nextInt(10)}"});
           },child: CommonTextWidget(text: "Home")),
 
           addVerticalSpace(height: 10),
 
           InkWell(onTap: () async{
-            await updateCheckDetails(tableId: "1",updatedData: {"Name": "dhaval kukadiya"});
+            await updateCheckDetails(tableId: "1",updatedData: {"Name": "Donall Trump"});
             showTableData(tableName: Attendance.attendanceTable);
           },child: CommonTextWidget(text: "update")),
 
