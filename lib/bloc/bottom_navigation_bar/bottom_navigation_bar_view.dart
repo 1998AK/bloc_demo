@@ -41,8 +41,8 @@ class _BottomNavigationUiState extends State<BottomNavigationUi> {
             },
           ),
           bottomNavigationBar: BottomBarBubble(
-            backgroundColor: appColor,
-            color: yellowColor,
+            backgroundColor: Colors.white,
+            color: forgotPasswordColor,
             items: [
               BottomBarItem(iconData: Icons.home),
               BottomBarItem(iconData: Icons.chat),
@@ -51,7 +51,6 @@ class _BottomNavigationUiState extends State<BottomNavigationUi> {
               BottomBarItem(iconData: Icons.account_box_outlined),
             ],
             onSelect: (index) {
-              // ✅ Now this context has access to BlocProvider
               context.read<BottomNavigationBarBloc>().add(
                 OnTapBottom(getIndexFromUi: index),
               );
