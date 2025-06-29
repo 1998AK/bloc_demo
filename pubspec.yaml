@@ -34,6 +34,13 @@ dependencies:
   permission_handler: ^12.0.0+1
   flutter_local_notifications: ^19.3.0
 
+#  google map use
+  google_maps_flutter: ^2.12.3
+  flutter_polyline_points: ^2.1.0
+#  permission_handler: ^12.0.0+1
+#   geolocator: ^14.0.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

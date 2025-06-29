@@ -25,13 +25,21 @@ class _SplashViewState extends State<SplashView> {
           loginModel = loginModelFromJson(data);
           debugPrint("name is ${loginModel?.user?.name}");
           if(mounted) {
-            Navigator.pushNamed(context, AppRoutes.bottomNavigationUi);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.bottomNavigationUi,
+                  (route) => false,
+            );
             // Navigator.pushNamed(context, AppRoutes.boxGame);
           }
         }
         else{
           if (mounted) {
-            Navigator.pushNamed(context, AppRoutes.loginView);
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              AppRoutes.loginView,
+                  (route) => false,
+            );
           }
         }
       });
