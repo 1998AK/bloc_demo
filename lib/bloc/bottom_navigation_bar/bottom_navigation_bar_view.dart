@@ -8,6 +8,8 @@ import 'package:bottom_bar_matu/bottom_bar_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../locationget/location_ui.dart';
+import '../../wethere/wethere_view.dart';
 import 'bottom_navigation_bar_events.dart';
 
 class BottomNavigationUi extends StatefulWidget {
@@ -33,9 +35,9 @@ class _BottomNavigationUiState extends State<BottomNavigationUi> {
 
               return [
                 const HomeView(),
+                const LocationScreen(),
+                const WeatherWithLocationScreen(),
                 const ProfileView(),
-                Container(color: Colors.white),
-                Container(color: Colors.white),
                 Container(color: Colors.white),
               ][currentIndex];
             },
@@ -45,8 +47,8 @@ class _BottomNavigationUiState extends State<BottomNavigationUi> {
             color: forgotPasswordColor,
             items: [
               BottomBarItem(iconData: Icons.home),
-              BottomBarItem(iconData: Icons.chat),
-              BottomBarItem(iconData: Icons.add_box_outlined),
+              BottomBarItem(iconData: Icons.location_on_outlined),
+              BottomBarItem(iconData: Icons.sunny),
               BottomBarItem(iconData: Icons.ad_units_outlined),
               BottomBarItem(iconData: Icons.account_box_outlined),
             ],
