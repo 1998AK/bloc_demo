@@ -5,7 +5,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-const String googleApiKey = 'AIzaSyCc3WdlgSLQZZPPt4PG7e_X2KR_5EWSAAw'; // Replace with your real key
+const String googleApiKey = 'your api key here'; // Replace with your real key
 
 class MapRouteScreen extends StatefulWidget {
   const MapRouteScreen({super.key});
