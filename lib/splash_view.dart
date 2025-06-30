@@ -51,7 +51,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       backgroundColor: appColor,
       body: Center(
-        child: Image.asset(AssetsName.logo),
+        child: FlutterLogo(size: 100,),
       ),
     );
   }
